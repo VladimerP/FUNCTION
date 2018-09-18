@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Найти расстояние между двумя точками в двумерном декартовом пространстве.</title>
+	<style>
+	.ss{
+	display: block;
+	}
+	#c1 {
+	width: 400px;
+	height: 200px;
+	border: 3px solid black;
+	margin: 40px;
+	background-image: url(setka.png);
+	}
+	</style>
+    <script>
+	function main(a){
+	var x1,x2,y1,y2;
+	x1=document.getElementById('1').value;
+	x1=Number(x1);
+	y1=document.getElementById('2').value;
+	y1=Number(y1);
+	x2=document.getElementById('3').value;
+	x2=Number(x2);
+	y2=document.getElementById('4').value;
+	y2=Number(y2);
+	if(a==1)
+		if(x1>0&&y1>0&&x2>0&&y2>0)
+			draw(x1,y1,x2,y2);
+		else
+		alert("Надо 4 координаты и все в плюсовую сторону");
+	if(a==2)
+		if(x1>0&&y1>0&&x2>0&&y2>0)
+			real(x1,y1,x2,y2);
+		else
+		alert("Надо 4 координаты и все в плюсовую сторону");
+	}
+	
+	function real(x1,y1,x2,y2){
+	var a = x1 - x2
+	var b = y1 - y2
+	var c = Math.sqrt( a*a + b*b );
+	alert("рфстояние между точками: "+c+"px");
+	}
+	
+	function draw(x1,y1,x2,y2){
+		var canvas = document.getElementById('c1');
+		var ctx = canvas.getContext('2d');
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.fillRect(x1-5,y1-5,10,10);
+		ctx.fillRect(x2-5,y2-5,10,10);
+		ctx.beginPath();
+		ctx.moveTo(x1,y1);
+		ctx.lineTo(x2,y2);
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = '#ff0000';
+		ctx.stroke();
+	}
+	</script>
+</head>
+<body>
+
+<canvas id="c1" width="400" height="200"></canvas><br>
+<p><b>X1:</b><br>
+<input class="ss" type="text" size="40" id="1"><br>
+<p><b>Y1:</b><br>
+<input class="ss" type="text" size="40" id="2"><br>
+<p><b>X2:</b><br>
+<input class="ss" type="text" size="40" id="3"><br>
+<p><b>Y2:</b><br>
+<input class="ss" type="text" size="40" id="4"><br>
+<input class="ss" type="submit" value="Рисуем" onclick="main(1)"><br>
+<input class="ss" type="submit" value="Расчитать растояние " onclick="main(2)">
+
+</body>
+</html>

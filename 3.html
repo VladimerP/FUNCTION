@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Вводим строку, которая содержит число, написанное прописью (0-999). Получить само число</title>
+	<script>
+	 
+	function main(){
+
+		var str = document.getElementById("1").value;
+		var ars = str.split(' ',3);
+		var x1,x2,x3;
+		var sum;
+		x1=odin(ars);
+		x2=dva(ars);
+		x3=tri(ars);
+		sum=x1+x2+x3;
+		alert("Ваше число: "+sum);
+	}
+		
+	function odin(arx){
+		let arr = ["ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять", "десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"];
+		let q=0;
+		for(let j=0;j<arx.length; j++)
+		for(let i=0;i<arr.length; i++){
+			if(arx[j]==arr[i]){
+				q=i;
+				break;
+			}
+		}
+		return q;
+	}
+	function dva(arx1){
+		let arr =["двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят","семьдесят", "восемьдесят", "девяносто"];
+		let q=0;
+		for(let j=0;j<arx1.length; j++)
+		for(let i=0;i<arr.length; i++){
+			if(arx1[j]==arr[i]){
+				q=(i+2)*10;
+				break;
+			}
+		}
+		return q;
+	}
+	
+	function tri(arx2){
+		let arr =['сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'];
+		let q=0;
+		for(let j=0;j<arx2.length; j++)
+		for(let i=0;i<arr.length; i++){
+			if(arx2[j]==arr[i]){
+				q=(i+1)*100;
+				break;
+			}
+		}
+		return q;
+	}
+	</script>
+</head>
+<body>
+	<form>
+		<p><b>Введите заданое число через пробел:</b><br>
+		<input type="text" size="40" id="1">
+		<input type="submit" value="Стартуем) " onclick="main()">
+		
+	</form>
+</body>
+</html>
